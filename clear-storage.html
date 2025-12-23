@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear localStorage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+        }
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .info {
+            color: #666;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗑️ Clear localStorage</h1>
+        <p>Click the button below to clear all user data, notes, and news from localStorage.</p>
+        <button onclick="clearStorage()">Clear All Data</button>
+        <button onclick="window.location.href='/'">Go to App</button>
+        <div id="message" class="message"></div>
+        <div class="info">
+            <strong>Note:</strong> Data is now stored in data.json file, not in localStorage.
+            <br>This page clears old localStorage data if any exists.
+        </div>
+    </div>
+
+    <script>
+        function clearStorage() {
+            // Clear specific keys
+            const keysToRemove = ['users', 'news', 'currentUserEmail'];
+            keysToRemove.forEach(key => {
+                localStorage.removeItem(key);
+            });
+
+            // Clear all notes (notes_email pattern)
+            Object.keys(localStorage).forEach(key => {
+                if (key.startsWith('notes_')) {
+                    localStorage.removeItem(key);
+                }
+            });
+
+            // Show success message
+            const message = document.getElementById('message');
+            message.className = 'message success';
+            message.style.display = 'block';
+            message.textContent = '✓ All localStorage data has been cleared!';
+
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+

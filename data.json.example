@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "email": "demo@example.com",
+      "firstName": "Demo",
+      "lastName": "User",
+      "dateOfBirth": "2000-01-01",
+      "password": "demo123"
+    }
+  ],
+  "news": [
+    {
+      "id": 1703332800000,
+      "title": "Welcome to the News Platform",
+      "content": "This is a demo news article to show how the news system works. You can create, view, and sort news articles.",
+      "authorEmail": "demo@example.com",
+      "authorName": "Demo User",
+      "publishDate": "2025-12-23T10:00:00.000Z"
+    }
+  ],
+  "notes": {
+    "demo@example.com": [
+      {
+        "id": 1703332800001,
+        "title": "Welcome Note",
+        "body": "This is your first note. You can create notes in different categories.",
+        "category": "DEFAULT",
+        "createdAt": "2025-12-23T10:00:00.000Z"
+      },
+      {
+        "id": 1703332800002,
+        "title": "Urgent Task",
+        "body": "This is an urgent note example.",
+        "category": "URGENT",
+        "createdAt": "2025-12-23T10:05:00.000Z"
+      }
+    ]
+  }
+}
+
